@@ -7,3 +7,23 @@
     font-family: "Inter", sans-serif;
   }
 }
+
+@theme{
+  --color-beige-400: #E6D5C2;
+  --color-beige-300: #F3EBE1;
+  --color-beige-200: #F9F5F0;
+  --color-beige-100: #FFFDF9;
+  --color-brown-700: #4A3F35;
+  --color-brown-600: #AB6C4B;
+  --color-brown-500: #B87F57;
+  --color-gray-600: #535353;
+  --color-gray-500: #7E7E7E;
+  --color-red-400: #F76042;
+  --color-red-100: #F3D1D1;
+  --color-orange-700: #FFAA2B;
+  --color-orange-100: #F3EBD1;
+  --color-green-500: #30653A;
+  --color-green-200: #D7F3D1;
+  --color-green-100: #D6E8D6;
+  --color-blush: #EBD6D0;
+}
