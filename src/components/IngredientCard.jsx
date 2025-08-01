@@ -1,15 +1,4 @@
 import { Tag } from "./Tag";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CircleX } from "lucide-react";
 
 export const IngredientCard = ({ icon, ingredient }) => {
   return (
@@ -25,15 +14,5 @@ export const IngredientCard = ({ icon, ingredient }) => {
         <Tag text={`${ingredient.amount} ${ingredient.unit}`} style={"bg-beige-200"}/>
       </section>
     </div>
-    // <Card className="relative flex-row border-brown-600 p-4 items-center w-full gap-3 rounded-3xl">
-    //   <CircleX strokeWidth={1.5} className="absolute -top-1 -right-1" />
-    //   <img src={icon.url} alt={icon.alt} className="h-8" />
-    //   <CardContent>
-    //     <CardTitle className="mb-1 text-brown-700">{ingredient.name}</CardTitle>
-    //     <Badge className="bg-beige-200 text-brown-700">
-    //       {ingredient.amount} {ingredient.unit}
-    //     </Badge>
-    //   </CardContent>
-    // </Card>
   );
 };

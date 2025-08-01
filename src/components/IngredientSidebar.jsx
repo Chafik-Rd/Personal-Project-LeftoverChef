@@ -1,4 +1,3 @@
-import { Buttons } from "./Buttons";
 import { IngredientCard } from "./IngredientCard";
 import { userIngredients } from "../data/userIngredients";
 import { Button } from "@/components/ui/button"
