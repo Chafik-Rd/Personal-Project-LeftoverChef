@@ -1,5 +1,4 @@
-import { Tag } from "./Tag";
-
+import { Badge } from "@/components/ui/badge";
 export const IngredientCard = ({ icon, ingredient }) => {
   return (
     <div className="relative flex gap-3 items-center p-4 bg-white w-full rounded-3xl border-1 border-brown-600 shadow-md hover:shadow-lg">
@@ -11,7 +10,9 @@ export const IngredientCard = ({ icon, ingredient }) => {
       </section>
       <section className="font-medium">
         <p className="mb-1">{ingredient.name}</p>
-        <Tag text={`${ingredient.amount} ${ingredient.unit}`} style={"bg-beige-200"}/>
+          <Badge className="bg-beige-200 text-brown-700 text-sm">
+            {ingredient.amount} {ingredient.unit}
+          </Badge>
       </section>
     </div>
   );
