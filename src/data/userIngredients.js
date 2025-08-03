@@ -11,6 +11,6 @@ export const userIngredients = [
     name: "กุ้ง",
     amount: "600",
     unit: "กรัม",
-    img: { url: "../assets/images/shrimp.png", alt: "shrimp" },
+    img: { url: "/shrimp.png", alt: "shrimp" },
   },
 ];
