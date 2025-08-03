@@ -4,7 +4,7 @@ export const userIngredients = [
     name: "หอมใหญ่",
     amount: "100",
     unit: "กรัม",
-    img: { url: "../assets/images/onion.png", alt: "onion" },
+    img: { url: "/onion.png", alt: "onion" },
   },
   {
     id: 1,
