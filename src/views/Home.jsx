@@ -1,5 +1,5 @@
-import { IngredientSidebar } from "./IngredientSidebar";
-import { Menu } from "./Menu";
+import { IngredientSidebar } from "../components/IngredientSidebar";
+import { Menu } from "../components/Menu";
 
 export const Home = () => {
   return (
