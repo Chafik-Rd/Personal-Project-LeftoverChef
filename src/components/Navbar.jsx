@@ -1,14 +1,15 @@
-import { UserRound } from 'lucide-react';
+import { UserRound } from "lucide-react";
 export const Navbar = () => {
-    return (
-        <nav className="sticky top-0 z-10 bg-beige-200 backdrop-blur-md">
-            <div className="flex px-4 md:px-8 py-4 h-16 justify-between items-center">
-                <section>
-                    <p className="text-brown-700 text-2xl md:text-4xl font-bold">LeftoverChef</p>
-                </section>
-                {/* <section className="cursor-pointer w-8 md:w-9 h-8 md:h-9"> */}
-                    <UserRound strokeWidth={1.5} color="#000000" size={32}/>
-            </div>
-        </nav>
-    )
-}
+  return (
+    <nav className="sticky top-0 z-10 bg-beige-200 backdrop-blur-md">
+      <div className="flex px-4 md:px-8 py-4 h-16 justify-between items-center">
+        <section>
+          <p className="text-brown-700 text-2xl md:text-4xl font-bold">
+            LeftoverChef
+          </p>
+        </section>
+        <UserRound strokeWidth={1.5} color="#000000" size={32} />
+      </div>
+    </nav>
+  );
+};
