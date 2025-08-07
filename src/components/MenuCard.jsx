@@ -16,6 +16,7 @@ export const MenuCard = ({
   time,
   menuForPeople,
   level,
+  onClick
 }) => {
   const levels = {
     easy: { style: "text-green-500 bg-green-100", text: "ง่าย", icon: 1 },
@@ -29,7 +30,7 @@ export const MenuCard = ({
 
   return (
     <>
-      <Card className="pt-0 gap-2 cursor-pointer hover:shadow-lg min-w-65">
+      <Card onClick={onClick} className="pt-0 gap-2 cursor-pointer hover:shadow-lg min-w-65">
         <img
           src={img.url}
           alt={img.alt}
@@ -55,8 +56,8 @@ export const MenuCard = ({
               levels[`${level}`].style
             }`}
           >
-            {[...Array(levels[`${level}`].icon)].map(() => (
-              <ChefHat size={18} strokeWidth={2} />
+            {[...Array(levels[`${level}`].icon)].map((icon,index) => (
+              <ChefHat key={index} size={18} strokeWidth={2} />
             ))}
             <p>{levels[`${level}`].text}</p>
           </Badge>
