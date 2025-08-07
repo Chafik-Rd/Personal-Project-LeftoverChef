@@ -6,61 +6,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Heart, Eye, Clock4, Users, ChefHat } from "lucide-react";
+import { Heart, Eye, Clock4, Users } from "lucide-react";
+import { Level } from "./Level";
+import { InfoTag } from "./InfoTag";
 
-export const MenuCard = ({
-  name,
-  description,
-  img,
-  time,
-  menuForPeople,
-  level,
-  onClick
-}) => {
-  const levels = {
-    easy: { style: "text-green-500 bg-green-100", text: "ง่าย", icon: 1 },
-    medium: {
-      style: "text-orange-700 bg-orange-100",
-      text: "ปานกลาง",
-      icon: 2,
-    },
-    hard: { style: "text-red-400 bg-red-100", text: "ยาก", icon: 3 },
-  };
-
+export const MenuCard = ({ name, description, img, level, infos, onClick }) => {
   return (
     <>
-      <Card onClick={onClick} className="pt-0 gap-2 cursor-pointer hover:shadow-lg min-w-65">
+      <Card
+        onClick={onClick}
+        className="pt-0 gap-2 cursor-pointer hover:shadow-lg min-w-65"
+      >
         <img
           src={img.url}
           alt={img.alt}
           className="h-44 object-cover rounded-t-xl mb-3"
         />
         <CardHeader>
-          <CardTitle className="text-xl text-brown-700 capitalize">{name}</CardTitle>
+          <CardTitle className="text-xl text-brown-700 capitalize">
+            {name}
+          </CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
         <CardContent className="text-gray-600">
           <div className="flex gap-2 text-gray-600">
-            <div className="flex gap-1 items-center">
-              <Clock4 size={16} strokeWidth={1.5} />
-              <p>{time}</p>
-            </div>
-            <div className="flex gap-1 items-center">
-              <Users size={16} strokeWidth={1.5} />
-              <p>{menuForPeople}</p>
-            </div>
-          </div>
-          <Badge
-            className={`flex gap-1 items-center mt-2 ${
-              levels[`${level}`].style
-            }`}
-          >
-            {[...Array(levels[`${level}`].icon)].map((icon,index) => (
-              <ChefHat key={index} size={18} strokeWidth={2} />
+            {infos.map((info,index) => (
+              <InfoTag key={index} icon={info.icon} text={info.text} />
             ))}
-            <p>{levels[`${level}`].text}</p>
-          </Badge>
+          </div>
+
+          {/* Level recipes */}
+          <Level level={level} />
         </CardContent>
         <CardFooter className="flex gap-2 justify-end text-sm font-light text-gray-500">
           <div className="flex gap-1 items-center">

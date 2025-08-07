@@ -5,8 +5,11 @@ export const recommendedMenu = [
     description:
       "ซอสบอลโลเนสซีสำหรับสปาเก็ตตี้รสชาติอร่อยเข้มข้นกับเนื้อสับหมูดำ",
     img: { url: "/section.png", alt: "" },
-    time: "15-30นาที",
-    menuForPeople: "2ที่",
+    infos: [
+      { icon: "Clock", text: "15-30นาที" },
+      { icon: "Users", text: "2ที่" },
+    ],
+
     level: "easy",
   },
   {
@@ -15,8 +18,10 @@ export const recommendedMenu = [
     description:
       "ซอสบอลโลเนสซีสำหรับสปาเก็ตตี้รสชาติอร่อยเข้มข้นกับเนื้อสับหมูดำ",
     img: { url: "/section.png", alt: "" },
-    time: "15-30นาที",
-    menuForPeople: "2ที่",
+    infos: [
+      { icon: "Clock", text: "15-30นาที" },
+      { icon: "Users", text: "2ที่" },
+    ],
     level: "medium",
   },
   {
@@ -25,8 +30,10 @@ export const recommendedMenu = [
     description:
       "ซอสบอลโลเนสซีสำหรับสปาเก็ตตี้รสชาติอร่อยเข้มข้นกับเนื้อสับหมูดำ",
     img: { url: "/section.png", alt: "" },
-    time: "15-30นาที",
-    menuForPeople: "2ที่",
+    infos: [
+      { icon: "Clock", text: "15-30นาที" },
+      { icon: "Users", text: "2ที่" },
+    ],
     level: "hard",
   },
 ];

@@ -119,8 +119,7 @@ export const Menu = ({ onClick }) => {
             name={menu.name}
             description={menu.description}
             img={menu.img}
-            time={menu.time}
-            menuForPeople={menu.menuForPeople}
+            infos={menu.infos}
             level={menu.level}
           />
         ))}
