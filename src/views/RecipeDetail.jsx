@@ -105,7 +105,7 @@ export const RecipeDetail = () => {
             ))}
           </Card>
 
-          <div className="flex gap-3 justify-center w-full">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center w-full">
             <Button
               variant="outline"
               size="lg"
