@@ -26,12 +26,12 @@ export const MenuCard = ({ name, description, img, level, infos, onClick }) => {
           <CardTitle className="text-xl text-brown-700 capitalize">
             {name}
           </CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription className="line-clamp-2">{description}</CardDescription>
         </CardHeader>
         <CardContent className="text-gray-600">
           <div className="flex gap-2 text-gray-600">
             {infos.map((info,index) => (
-              <InfoTag key={index} icon={info.icon} text={info.text} />
+              <InfoTag key={index} icon={info.icon} text={`${info.value}${info.unit}`} />
             ))}
           </div>
 

@@ -12,7 +12,7 @@ const levels = {
 export const Level = ({level}) => {
   return (
     <Badge
-      className={`flex gap-1 items-center mt-2 ${levels[`${level}`].style}`}
+      className={`flex gap-1 items-center ${levels[`${level}`].style}`}
     >
       {[...Array(levels[`${level}`].icon)].map((icon, index) => (
         <ChefHat key={index} size={18} strokeWidth={2} />

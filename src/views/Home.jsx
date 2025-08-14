@@ -5,7 +5,7 @@ import { Menu } from "../components/Menu";
 export const Home = () => {
   const [showIngredient, setShowIngredient] = useState(false);
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-beige-200 flex">
+    <div className="min-h-[calc(100vh-124px)] bg-beige-200 flex">
       {/* Desktop ingredient sidebar */}
       <div className="hidden md:block">
         <IngredientSidebar />

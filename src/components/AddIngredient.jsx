@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { unitsIngredients } from "../data/addIngredients";
 
 export const AddIngredient = ({onClick}) => {
   return (
@@ -38,13 +39,12 @@ export const AddIngredient = ({onClick}) => {
                   <p>หน่วย:</p>
                 <Select>
                   <SelectTrigger className="py-3">
-                    <SelectValue placeholder="ทุกระดับ" />
+                    <SelectValue placeholder="หน่วย" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ทุกระดับ">ทุกระดับ</SelectItem>
-                    <SelectItem value="ง่าย">ง่าย</SelectItem>
-                    <SelectItem value="ปานกลาง">ปานกลาง</SelectItem>
-                    <SelectItem value="ยาก">ยาก</SelectItem>
+                    {unitsIngredients.map((unit) => (
+                      <SelectItem key={unit.id} value={unit.unit}>{unit.unit}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 </div>

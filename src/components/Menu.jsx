@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Menu = ({ onClick }) => {
   const [layout, setLayout] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleViewDetails = (recipeId) => {
     navigate(`/recipes/${recipeId}`);
   };
@@ -112,17 +112,24 @@ export const Menu = ({ onClick }) => {
             : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-cols-min"
         } gap-6 w-full overflow-y-auto`}
       >
-        {recommendedMenu.map((menu) => (
-          <MenuCard
-            key={menu.id}
-            onClick={() => handleViewDetails(menu.id)}
-            name={menu.name}
-            description={menu.description}
-            img={menu.img}
-            infos={menu.infos}
-            level={menu.level}
-          />
-        ))}
+        {recommendedMenu.map((menu) => {
+          const infoLists = [
+            { icon: "Clock", value: menu.cook_time, unit: "นาที" },
+            { icon: "Users", value: menu.servings, unit: "ที่" },
+            { icon: "Cal", value: menu.calorie, unit: "kcal" },
+          ];
+          return (
+            <MenuCard
+              key={menu.id}
+              onClick={() => handleViewDetails(menu.id)}
+              name={menu.name}
+              description={menu.description}
+              img={menu.img}
+              infos={infoLists}
+              level={menu.level}
+            />
+          );
+        })}
       </section>
     </div>
   );
