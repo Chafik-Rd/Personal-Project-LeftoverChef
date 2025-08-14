@@ -11,7 +11,9 @@ export const Navbar = () => {
             </p>
           </Link>
         </section>
-        <UserRound strokeWidth={1.5} color="#000000" size={32} />
+        <Link to="login">
+          <UserRound strokeWidth={1.5} color="#000000" size={32} />
+        </Link>
       </div>
     </nav>
   );
