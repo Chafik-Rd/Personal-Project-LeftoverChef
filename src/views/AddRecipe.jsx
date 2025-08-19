@@ -3,9 +3,8 @@ import { MainBackground } from "../components/MainBackground";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ImagePlus, X, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-
 import {
   Select,
   SelectContent,
@@ -17,13 +16,14 @@ import { unitsIngredients, levelsRecipe } from "../data/addIngredients";
 
 export const AddRecipe = () => {
   const [preview, setPreview] = useState("");
+  const [isSave, setIsSave] = useState(false);
   const [recipe, setRecipe] = useState({
     name: "",
     kcal: "",
     time: "",
     level: "",
     detail: "",
-    image: "",
+    // image: "",
     ingredient: [
       {
         name: "",
@@ -33,13 +33,31 @@ export const AddRecipe = () => {
     ],
     steps: [""],
   });
-  console.log(recipe);
+
+  // Check empty data
+  useEffect(() => {
+    const checkEmpty = Object.values(recipe).some((value) => {
+      if (Array.isArray(value)) {
+        if (typeof value[0] === "object") {
+          return Object.values(value[0]).some((item) => item.trim() === "");
+        } else {
+          return value[0].trim() === "";
+        }
+      }
+      if (typeof value === "string") {
+        return value.trim() === "";
+      }
+      return false;
+    });
+    setIsSave(checkEmpty);
+  }, [recipe]);
 
   const handlePreview = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
+    console.log(file);
     if (file) {
-      setRecipe({ ...recipe, image: file });
+      // setRecipe({ ...recipe, image: file });
       setPreview(URL.createObjectURL(file));
     }
   };
@@ -47,13 +65,18 @@ export const AddRecipe = () => {
   const handleOnchange = (e) => {
     setRecipe({ ...recipe, [e.target.name]: e.target.value });
   };
+
   const handleOnSelect = (name, e) => {
-    setRecipe({ ...recipe, [name]: e });
+    const modes = {
+      level: e,
+      ingredient: [{ ...recipe[name][0], unit: e }],
+    };
+    // console.log(modes[name]);
+    setRecipe({ ...recipe, [name]: modes[name] });
   };
 
   const handleOnchangeArray = (key, index, obj, e) => {
     const newSteps = [...recipe[key]];
-    console.log(newSteps[index][e.target.name]);
     if (obj === "obj") {
       newSteps[index][e.target.name] = e.target.value;
     }
@@ -87,6 +110,10 @@ export const AddRecipe = () => {
     if (!checkEmpty) {
       setRecipe({ ...recipe, [key]: [...recipe[key], array[mode].value] });
     }
+  };
+
+  const handleSave = () => {
+    console.log(recipe);
   };
 
   return (
@@ -173,13 +200,13 @@ export const AddRecipe = () => {
             </label>
             <label className="w-full">
               <p>ระดับความยาก:</p>
-              <Select onValueChange={(e) => handleOnSelect("level", e)}>
+              <Select defaultValue="easy" onValueChange={(e) => handleOnSelect("level", e)}>
                 <SelectTrigger>
                   <SelectValue placeholder="ระดับความยาก:" />
                 </SelectTrigger>
                 <SelectContent>
                   {levelsRecipe.slice(1).map((level) => (
-                    <SelectItem key={level.level.id} value={level.level.value}>
+                    <SelectItem key={level.id} value={level.level.value}>
                       {level.level.label}
                     </SelectItem>
                   ))}
@@ -252,7 +279,7 @@ export const AddRecipe = () => {
                 />
               </label>
               <label className="w-full">
-                <Select onValueChange={(e) => handleOnSelect("level", e)}>
+                <Select onValueChange={(e) => handleOnSelect("ingredient", e)}>
                   <SelectTrigger>
                     <SelectValue placeholder="หน่วย:" />
                   </SelectTrigger>
@@ -323,8 +350,16 @@ export const AddRecipe = () => {
             </div>
           ))}
         </Card>
+
+        {/* Button save recipe*/}
         <div className="w-full flex justify-center">
-          <Button size="lg" className="text-2xl font-medium w-fit">
+          <Button
+            onClick={() => handleSave()}
+            size="lg"
+            className={`text-2xl font-medium w-fit ${
+              isSave && "pointer-events-none bg-brown-500/80"
+            }`}
+          >
             <Plus className="size-8" />
             เพิ่มเมนู
           </Button>

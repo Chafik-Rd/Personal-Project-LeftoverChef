@@ -11,7 +11,7 @@ import { recommendedMenu } from "../data/recommendedMenu";
 import { Search, Grid3x3, Rows3, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { levelsRecipe } from "../data/addIngredients";
+import { levelsRecipe, timeRecipe } from "../data/addIngredients";
 
 export const Menu = ({ onClick }) => {
   const [layout, setLayout] = useState(false);
@@ -49,24 +49,25 @@ export const Menu = ({ onClick }) => {
               className="peer px-8 max-w-125"
             />
           </label>
-          <Select>
+          <Select defaultValue="allTime">
             <SelectTrigger className="w-27">
               <SelectValue placeholder="ทุกเวลา" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ทุกเวลา">ทุกเวลา</SelectItem>
-              <SelectItem value="5นาที">5นาที</SelectItem>
-              <SelectItem value="5-10นาที">5-10นาที</SelectItem>
-              <SelectItem value="10-15นาที">10-15นาที</SelectItem>
+              {timeRecipe.map((time) => (
+                <SelectItem key={time.id} value={time.time.value}>
+                  {time.time.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
-          <Select>
+          <Select defaultValue="allLavel">
             <SelectTrigger className="w-27">
               <SelectValue placeholder="ทุกระดับ" />
             </SelectTrigger>
             <SelectContent>
               {levelsRecipe.map((level) => (
-                <SelectItem key={level.level.id} value={level.level.value}>
+                <SelectItem key={level.id} value={level.level.value}>
                   {level.level.label}
                 </SelectItem>
               ))}

@@ -32,3 +32,11 @@ export const levelsRecipe = [
     {id:4,level:{label:"ยาก", value:"hard"} },
 
 ]
+export const timeRecipe = [
+    {id:1,time:{label:"ทุกเวลา", value:"allTime"} },
+    {id:2,time:{label:"5-10นาที", value:"5-10"} },
+    {id:3,time:{label:"11-15นาที", value:"11-15"} },
+    {id:4,time:{label:"16-20นาที", value:"16-20"} },
+    {id:5,time:{label:"21-25นาที", value:"21-25"} },
+    {id:6,time:{label:"26-30นาที", value:"26-30"} },
+]
