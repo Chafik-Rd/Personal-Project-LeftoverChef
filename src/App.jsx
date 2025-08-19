@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import { Home } from "./views/Home";
 import { RecipeDetail } from "./views/RecipeDetail";
 import { Login } from "./views/Login";
+import { AddRecipe } from "./views/AddRecipe";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "recipes/:recipeId", element: <RecipeDetail /> },
       { path: "login", element: <Login /> },
+      { path: "addrecipe", element: <AddRecipe /> },
     ],
   },
 ]);

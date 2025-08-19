@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { IngredientSidebar } from "../components/IngredientSidebar";
 import { Menu } from "../components/Menu";
+import { MainBackground } from "../components/MainBackground";
 
 export const Home = () => {
   const [showIngredient, setShowIngredient] = useState(false);
   return (
-    <div className="min-h-[calc(100vh-124px)] bg-beige-200 flex">
+    <MainBackground className="flex">
       {/* Desktop ingredient sidebar */}
       <div className="hidden md:block">
         <IngredientSidebar />
@@ -18,6 +19,6 @@ export const Home = () => {
         </div>
       )}
       <Menu onClick={setShowIngredient} />
-    </div>
+    </MainBackground>
   );
 };

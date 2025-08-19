@@ -2,9 +2,10 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { UserRound, LockKeyhole, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MainBackground } from "../components/MainBackground";
 export const Login = () => {
   return (
-    <div className="min-h-[calc(100vh-124px)] px-6 sm:px-8 py-4 bg-beige-200 flex justify-center items-center">
+    <MainBackground className="px-6 sm:px-8 py-4 flex justify-center items-center">
       <Card className="max-w-115 w-full flex flex-col items-center text-brown-700 p-8">
         <h1 className="text-4xl font-bold mb-6">Sign in</h1>
         <form className="flex flex-col gap-4 items-center">
@@ -42,6 +43,6 @@ export const Login = () => {
           <ArrowRight className="size-5" />
         </div> */}
       </Card>
-    </div>
+    </MainBackground>
   );
 };

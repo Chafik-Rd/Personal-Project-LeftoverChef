@@ -16,12 +16,19 @@ export const iconsIngredients = [
     {id:15,icon:{url: "/shrimp.png", alt: "shrimp"}},
 ]
 export const unitsIngredients = [
-    {id:1,unit: "กรัม"},
-    {id:2,unit: "กิโลกรัม"},
-    {id:3,unit: "ลิตร"},
-    {id:4,unit: "มิลลิลิตร"},
-    {id:5,unit: "ช้อนโต๊ะ"},
-    {id:6,unit: "ช้อนชา"},
-    {id:7,unit: "ฟอง"},
+    {id:1,unit:{label:"กรัม", value:"g"} },
+    {id:2,unit:{label:"กิโลกรัม", value:"kg"} },
+    {id:3,unit:{label:"ลิตร", value:"l"} },
+    {id:4,unit:{label:"มิลลิลิตร", value:"ml"} },
+    {id:5,unit:{label:"ช้อนโต๊ะ", value:"tbsp"} },
+    {id:6,unit:{label:"ช้อนชา", value:"tsp"} },
+    {id:7,unit:{label:"ฟอง", value:"eggs"} },
+
+]
+export const levelsRecipe = [
+    {id:1,level:{label:"ทุกระดับ", value:"allLavel"} },
+    {id:2,level:{label:"ง่าย", value:"easy"} },
+    {id:3,level:{label:"ปานกลาง", value:"medium"} },
+    {id:4,level:{label:"ยาก", value:"hard"} },
 
 ]

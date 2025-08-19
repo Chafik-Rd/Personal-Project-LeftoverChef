@@ -11,6 +11,7 @@ import { recommendedMenu } from "../data/recommendedMenu";
 import { Search, Grid3x3, Rows3, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { levelsRecipe } from "../data/addIngredients";
 
 export const Menu = ({ onClick }) => {
   const [layout, setLayout] = useState(false);
@@ -64,10 +65,11 @@ export const Menu = ({ onClick }) => {
               <SelectValue placeholder="ทุกระดับ" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ทุกระดับ">ทุกระดับ</SelectItem>
-              <SelectItem value="ง่าย">ง่าย</SelectItem>
-              <SelectItem value="ปานกลาง">ปานกลาง</SelectItem>
-              <SelectItem value="ยาก">ยาก</SelectItem>
+              {levelsRecipe.map((level) => (
+                <SelectItem key={level.level.id} value={level.level.value}>
+                  {level.level.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
