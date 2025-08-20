@@ -1,0 +1,16 @@
+export const userIngredients = [
+  {
+    id: 2,
+    name: "หอมใหญ่",
+    amount: "100",
+    unit: "กรัม",
+    img: { url: "/onion.png", alt: "onion" },
+  },
+  {
+    id: 1,
+    name: "กุ้ง",
+    amount: "600",
+    unit: "กรัม",
+    img: { url: "/shrimp.png", alt: "shrimp" },
+  },
+];
