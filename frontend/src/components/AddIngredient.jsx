@@ -10,16 +10,23 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { unitsIngredients } from "../data/addIngredients";
+import { useState } from "react";
 import { useContext } from "react";
 import { MessageContext } from "../context/MessageContext";
 
 export const AddIngredient = ({ onClick }) => {
-  const { userIngre, setUserIngre } = useContext(MessageContext);
+  const [ingre, setIngre] = useState({
+    name: "",
+    quantity: "",
+    unit: "",
+    img: "",
+  });
+  const { handleUserIngre } = useContext(MessageContext);
 
   const handleOnChange = (e) => {
-    setUserIngre({ ...userIngre, [e.target.name]: e.target.value });
+    setIngre({ ...ingre, [e.target.name]: e.target.value });
   };
-  console.log(userIngre);
+
   return (
     <div className="fixed top-0 left-0 z-15 h-screen w-full bg-black/80 flex justify-center items-center">
       <div className="max-w-125 w-full bg-white px-8 py-6 rounded-4xl text-xl font-medium">
@@ -38,7 +45,7 @@ export const AddIngredient = ({ onClick }) => {
               onChange={handleOnChange}
               placeholder="ใส่ชื่อวัตถุดิบ"
               name="name"
-              value={userIngre.name}
+              value={ingre.name}
             />
           </label>
           <div className="flex gap-3">
@@ -47,15 +54,13 @@ export const AddIngredient = ({ onClick }) => {
               <Input
                 onChange={handleOnChange}
                 placeholder="ใส่จำนวนวัตถุดิบ"
-                name="amount"
-                value={userIngre.amount}
+                name="quantity"
+                value={ingre.quantity}
               />
             </label>
             <label className="w-full h-full">
               <p>หน่วย:</p>
-              <Select
-                onValueChange={(e) => setUserIngre({ ...userIngre, unit: e })}
-              >
+              <Select onValueChange={(e) => setIngre({ ...ingre, unit: e })}>
                 <SelectTrigger className="py-3">
                   <SelectValue placeholder="หน่วย" />
                 </SelectTrigger>
@@ -97,7 +102,9 @@ export const AddIngredient = ({ onClick }) => {
             >
               ยกเลิก
             </Button>
-            <Button size="md">เพิ่ม</Button>
+            <Button onClick={() => handleUserIngre(ingre)} size="md">
+              เพิ่ม
+            </Button>
           </div>
         </div>
       </div>
