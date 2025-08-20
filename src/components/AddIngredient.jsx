@@ -10,8 +10,21 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { unitsIngredients } from "../data/addIngredients";
+import { useState } from 'react';
 
 export const AddIngredient = ({onClick}) => {
+  const [userIngre, setUserIngre] = useState(
+      {
+        name: "",
+        amount: "",
+        unit: "",
+        img: "",
+      },
+    );
+  const handleOnChange = (e) => {
+    setUserIngre({ ...userIngre, [e.target.name]: e.target.value });
+  };
+  console.log(userIngre);
   return (
     <div className="fixed top-0 left-0 z-15 h-screen w-full bg-black/80 flex justify-center items-center">
           <div className="max-w-125 w-full bg-white px-8 py-6 rounded-4xl text-xl font-medium">
@@ -28,14 +41,14 @@ export const AddIngredient = ({onClick}) => {
             <div className="flex flex-col gap-4">
               <label>
                 <p>ชื่อวัตถุดิบ:</p>
-                <Input placeholder="ใส่ชื่อวัตถุดิบ" />
+                <Input onChange={handleOnChange} placeholder="ใส่ชื่อวัตถุดิบ" name="name" value={userIngre.name} />
               </label>
               <div className="flex gap-3">
                 <label className="w-full">
                   <p>จำนวน:</p>
-                  <Input placeholder="ใส่จำนวนวัตถุดิบ" />
+                  <Input onChange={handleOnChange} placeholder="ใส่จำนวนวัตถุดิบ" name="amount" value={userIngre.amount}/>
                 </label>
-                <div className="w-full h-full">
+                <label className="w-full h-full">
                   <p>หน่วย:</p>
                 <Select>
                   <SelectTrigger className="py-3">
@@ -43,11 +56,11 @@ export const AddIngredient = ({onClick}) => {
                   </SelectTrigger>
                   <SelectContent>
                     {unitsIngredients.map((unit) => (
-                      <SelectItem key={unit.id} value={unit.unit}>{unit.unit}</SelectItem>
+                      <SelectItem key={unit.id} value={unit.unit.value}>{unit.unit.label}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-                </div>
+                </label>
               </div>
 
               {/* Select icon */}

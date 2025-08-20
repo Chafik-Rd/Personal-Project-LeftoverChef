@@ -3,7 +3,6 @@ import { userIngredients } from "../data/userIngredients";
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2, X } from "lucide-react";
 import { useState } from "react";
-
 import { AddIngredient } from "./AddIngredient";
 
 export const IngredientSidebar = ({ onClick }) => {
@@ -12,7 +11,10 @@ export const IngredientSidebar = ({ onClick }) => {
   return (
     <div className="h-screen md:h-[calc(100vh-124px)] flex flex-col bg-beige-300 w-60 border-x-1 border-b-1 border-brown-600 text-brown-700">
       <section className="flex flex-col gap-4 p-4 font-medium border-b-1 border-brown-600">
-        <X onClick={() => onClick(false)} className="ml-auto cursor-pointer md:hidden" />
+        <X
+          onClick={() => onClick(false)}
+          className="ml-auto cursor-pointer md:hidden"
+        />
         <h2 className="text-2xl">วัตถุดิบของฉัน</h2>
         <Button
           onClick={() => setAddIngredient(true)}
