@@ -10,15 +10,12 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { unitsIngredients } from "../data/addIngredients";
-import { useState } from "react";
+import { useContext } from "react";
+import { MessageContext } from "../context/MessageContext";
 
 export const AddIngredient = ({ onClick }) => {
-  const [userIngre, setUserIngre] = useState({
-    name: "",
-    amount: "",
-    unit: "",
-    img: "",
-  });
+  const { userIngre, setUserIngre } = useContext(MessageContext);
+
   const handleOnChange = (e) => {
     setUserIngre({ ...userIngre, [e.target.name]: e.target.value });
   };
