@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { unitsIngredients, levelsRecipe } from "../data/addIngredients";
+import axios from "axios";
 
 export const AddRecipe = () => {
   const [preview, setPreview] = useState("");
@@ -33,15 +34,16 @@ export const AddRecipe = () => {
     ],
     steps: [""],
   });
+  console.log(recipe)
 
   // Check empty data
   useEffect(() => {
     const checkEmpty = Object.values(recipe).some((value) => {
       if (Array.isArray(value)) {
-        if (typeof value[0] === "object") {
-          return Object.values(value[0]).some((item) => item.trim() === "");
+        if (typeof value[value.length-1] === "object") {
+          return Object.values(value[value.length-1]).some((item) => item.trim() === "");
         } else {
-          return value[0].trim() === "";
+          return value[value.length-1].trim() === "";
         }
       }
       if (typeof value === "string") {
@@ -112,8 +114,9 @@ export const AddRecipe = () => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     console.log(recipe);
+    await axios.post("", recipe)
   };
 
   return (
@@ -200,7 +203,7 @@ export const AddRecipe = () => {
             </label>
             <label className="w-full">
               <p>ระดับความยาก:</p>
-              <Select defaultValue="easy" onValueChange={(e) => handleOnSelect("level", e)}>
+              <Select onValueChange={(e) => handleOnSelect("level", e)}>
                 <SelectTrigger>
                   <SelectValue placeholder="ระดับความยาก:" />
                 </SelectTrigger>
