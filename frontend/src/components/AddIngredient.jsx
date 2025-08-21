@@ -1,4 +1,4 @@
-import { iconsIngredients } from "../data/addIngredients";
+// import { iconsIngredients } from "../data/addIngredients";
 import {
   Select,
   SelectContent,
@@ -19,7 +19,7 @@ export const AddIngredient = ({ onClick }) => {
     name: "",
     quantity: "",
     unit: "",
-    img: "",
+    // img: "",
   });
   const { handleUserIngre } = useContext(MessageContext);
 
@@ -42,6 +42,7 @@ export const AddIngredient = ({ onClick }) => {
           <label>
             <p>ชื่อวัตถุดิบ:</p>
             <Input
+            type="text"
               onChange={handleOnChange}
               placeholder="ใส่ชื่อวัตถุดิบ"
               name="name"
@@ -52,6 +53,7 @@ export const AddIngredient = ({ onClick }) => {
             <label className="w-full">
               <p>จำนวน:</p>
               <Input
+                type="number"
                 onChange={handleOnChange}
                 placeholder="ใส่จำนวนวัตถุดิบ"
                 name="quantity"
@@ -76,7 +78,7 @@ export const AddIngredient = ({ onClick }) => {
           </div>
 
           {/* Select icon */}
-          <div>
+          {/* <div>
             <h3>ไอคอน:</h3>
             <div className="flex gap-3 flex-wrap h-27 overflow-y-scroll">
               {iconsIngredients.map((icon) => (
@@ -90,7 +92,7 @@ export const AddIngredient = ({ onClick }) => {
                 </Button>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Butun */}
           <div className="flex gap-3 justify-center">
@@ -102,7 +104,7 @@ export const AddIngredient = ({ onClick }) => {
             >
               ยกเลิก
             </Button>
-            <Button onClick={() => handleUserIngre(ingre)} size="md">
+            <Button onClick={() => handleUserIngre(ingre)} size="md" className={`${Object.values(ingre).some(item=>item.trim()==="") && "pointer-events-none bg-brown-500/80"}`}>
               เพิ่ม
             </Button>
           </div>

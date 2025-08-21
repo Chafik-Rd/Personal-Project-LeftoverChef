@@ -3,7 +3,7 @@ import { MessageContext } from "./MessageContext";
 import { useEffect } from "react";
 
 export const MessageProvider = ({ children }) => {
-  const [allUserIngre, setAlluserIngre] = useState([]);
+  const [allUserIngre, setAllUserIngre] = useState([]);
 
   const handleUserIngre = (ingre) => {
     const userIngre = allUserIngre.find(
@@ -11,17 +11,18 @@ export const MessageProvider = ({ children }) => {
     );
 
     if (typeof userIngre === "object") {
-      userIngre.quantity += ingre.quantity || 1;
-      setAlluserIngre([...allUserIngre]);
+      console.log(ingre);
+      userIngre.quantity = String(Number(userIngre.quantity) + Number(ingre.quantity) || 1);
+      setAllUserIngre([...allUserIngre]);
     } else {
-      setAlluserIngre([...allUserIngre, ingre]);
+      setAllUserIngre([...allUserIngre, ingre]);
     }
   };
 
   // Read data from local storage
   useEffect(() => {
     if (localStorage.getItem("userIngre")) {
-      setAlluserIngre(JSON.parse(localStorage.getItem("userIngre")));
+      setAllUserIngre(JSON.parse(localStorage.getItem("userIngre")));
     }
   }, []);
 
@@ -33,7 +34,7 @@ export const MessageProvider = ({ children }) => {
   }, [allUserIngre]);
 
   return (
-    <MessageContext value={{ allUserIngre, setAlluserIngre, handleUserIngre }}>
+    <MessageContext value={{ allUserIngre, setAllUserIngre, handleUserIngre }}>
       {children}
     </MessageContext>
   );

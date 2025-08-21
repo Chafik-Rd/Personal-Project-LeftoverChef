@@ -1,12 +1,15 @@
 import { IngredientCard } from "./IngredientCard";
-import { userIngredients } from "../data/userIngredients";
+// import { userIngredients } from "../data/userIngredients";
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2, X } from "lucide-react";
 import { useState } from "react";
 import { AddIngredient } from "./AddIngredient";
+import { useContext } from "react";
+import { MessageContext } from "../context/MessageContext";
 
 export const IngredientSidebar = ({ onClick }) => {
   const [addIngredient, setAddIngredient] = useState(false);
+  const {allUserIngre, setAllUserIngre} = useContext(MessageContext)
 
   return (
     <div className="h-screen md:h-[calc(100vh-124px)] flex flex-col bg-beige-300 w-60 border-x-1 border-b-1 border-brown-600 text-brown-700">
@@ -24,7 +27,7 @@ export const IngredientSidebar = ({ onClick }) => {
           <Plus className="size-8" />
           เพิ่มวัตถุดิบ
         </Button>
-        <div className="flex gap-1 items-center justify-end text-gray-500 font-normal cursor-pointer hover:scale-95">
+        <div onClick={()=>setAllUserIngre([])} className="flex gap-1 items-center justify-end text-gray-500 font-normal cursor-pointer hover:scale-95">
           <Trash2 size={16} />
           <p>ล้างทั้งหมด</p>
         </div>
@@ -32,11 +35,12 @@ export const IngredientSidebar = ({ onClick }) => {
 
       {/* User ingredients card */}
       <section className="flex flex-col p-4 gap-3 items-end felx-1 overflow-y-auto">
-        {userIngredients.map((ingredient) => {
+        {allUserIngre.map((ingredient,index) => {
           return (
             <IngredientCard
-              key={ingredient.id}
-              icon={ingredient.img}
+              key={index}
+              indexIngre={index}
+              // icon={ingredient.img}
               ingredient={ingredient}
             />
           );
