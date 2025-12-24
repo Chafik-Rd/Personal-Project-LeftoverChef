@@ -7,6 +7,7 @@ import { limiter } from "./middleware/rateLimiter.js";
 import { createHttpError } from "./utils/createHttpError.js";
 import { centralizedError } from "./middleware/centralizedError.js";
 import apiRoutes from "./api/routes.js";
+import { AppDataSource } from "./data-source.js";
 
 // Load environment variable from .env file
 dotenv.config();
@@ -55,6 +56,9 @@ const port = process.env.PORT || 8055;
 
 (async () => {
   try {
+    await AppDataSource.initialize();
+    console.log("Database connected successfully! 🐘");
+
     app.listen(port, () => {
       console.log(`Server running on port ${port} ✅`);
     });

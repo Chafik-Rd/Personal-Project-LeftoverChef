@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: leftoverChef_pg_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  backend:
+    build: .
+    container_name: leftoverChef_backend
+    depends_on:
+      - db
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: pnpm run dev
+
+volumes:
+  pgdata:
