@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import { limiter } from "./middleware/rateLimiter.js";
 import { createHttpError } from "./utils/createHttpError.js";
 import { centralizedError } from "./middleware/centralizedError.js";
-import apiRoutes from "./api/routes.js";
+import apiRoutes from "./api/routes/index.js";
 import { AppDataSource } from "./data-source.js";
 
 // Load environment variable from .env file

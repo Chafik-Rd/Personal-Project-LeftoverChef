@@ -8,9 +8,9 @@ export class Base {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @CreateDateColumn({ name: "created_at", type: "timestamptz" })
+  @CreateDateColumn({ name: "created_at"})
   createdAt!: Date;
 
-  @UpdateDateColumn({ name: "updated_at", type: "timestamptz" })
+  @UpdateDateColumn({ name: "updated_at"})
   updatedAt!: Date;
 }

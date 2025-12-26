@@ -2,23 +2,18 @@ import { Column, Entity, OneToMany } from "typeorm";
 import { Base } from "./Base.js";
 import { RecipeIngredient } from "./RecipeIngredient.js";
 import { UserIngredient } from "./UserIngredient.js";
-
-enum IngredientUnit {
-  GRAM = "g",
-  KILOGRAM = "kg",
-  LITER = "l",
-  MILLILITER = "ml",
-  TABLESPOON = "tbsp",
-  TEASPOON = "tsp",
-  PIECE = "piece",
-}
+import type { IngredientUnit } from "../types/ingredient.type.js";
 
 @Entity()
 export class Ingredient extends Base {
   @Column({ type: "varchar", unique: true })
   name!: string;
 
-  @Column({ type: "enum", enum: IngredientUnit })
+  @Column({
+    type: "varchar",
+    length: 10,
+    comment: "Unit of measurement (e.g., g, kg, piece)",
+  })
   unit!: IngredientUnit;
 
   @OneToMany(
