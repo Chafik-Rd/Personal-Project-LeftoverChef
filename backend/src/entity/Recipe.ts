@@ -2,20 +2,12 @@ import { Column, Entity, JoinColumn, OneToMany } from "typeorm";
 import { Base } from "./Base.js";
 import { RecipeIngredient } from "./RecipeIngredient.js";
 import { RecipeInstruction } from "./RecipeInstruction.js";
-
-enum RecipeLevel {
-  EASY = "easy",
-  MEDIUM = "medium",
-  HARD = "hard",
-}
+import type { RecipeLevel } from "../types/recipe.type.js";
 
 @Entity()
 export class Recipe extends Base {
   @Column({ type: "varchar" })
   name!: string;
-
-  @Column({ type: "varchar", unique: true })
-  slug!: string;
 
   @Column({ type: "text" })
   description!: string;
@@ -29,11 +21,14 @@ export class Recipe extends Base {
   @Column({ type: "int" })
   servings!: number;
 
-  @Column({ type: "enum", enum: RecipeLevel })
+  @Column({ type: "varchar", comment: "Level of recipe (easy, medium, hard)" })
   level!: RecipeLevel;
 
-  @Column({ type: "text" })
-  image!: string;
+  @Column({ name: "image_url", type: "text" })
+  imageUrl!: string;
+
+  @Column({ name: "image_public_id", type: "text" })
+  imagePublicId!: string;
 
   @OneToMany(
     (type) => RecipeIngredient,

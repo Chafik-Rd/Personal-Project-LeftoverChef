@@ -1,5 +1,6 @@
 import z from "zod";
-import { INGREDIENT_UNITS } from "../../types/ingredient.type.js";
+import { INGREDIENT_UNITS } from "../../types/share.type.js";
+
 
 // Create ingredient
 export const createIngredientSchema = z.object({

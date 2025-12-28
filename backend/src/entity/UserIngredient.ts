@@ -9,7 +9,9 @@ export class UserIngredient extends Base {
   userId!: number;
 
   // Join ref User
-  @ManyToOne((type) => User, (user) => user.userIngredient)
+  @ManyToOne((type) => User, (user) => user.userIngredient, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "user_id" })
   user!: User;
 
@@ -17,7 +19,9 @@ export class UserIngredient extends Base {
   ingredientId!: number;
 
   // Join ref User
-  @ManyToOne((type) => Ingredient, (ingredient) => ingredient.userIngredient)
+  @ManyToOne((type) => Ingredient, (ingredient) => ingredient.userIngredient, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "ingredient_id" })
   ingredient!: Ingredient;
 

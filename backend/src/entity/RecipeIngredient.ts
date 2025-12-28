@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 import { Base } from "./Base.js";
 import { Recipe } from "./Recipe.js";
 import { Ingredient } from "./Ingredient.js";
+import type { IngredientUnit } from "../types/share.type.js";
 
 @Entity()
 export class RecipeIngredient extends Base {
@@ -9,7 +10,9 @@ export class RecipeIngredient extends Base {
   recipeId!: number;
 
   // Join ref to Recipe
-  @ManyToOne((type) => Recipe, (recipe) => recipe.recipeIngredients)
+  @ManyToOne((type) => Recipe, (recipe) => recipe.recipeIngredients, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "recipe_id" })
   recipe!: Recipe;
 
@@ -17,10 +20,21 @@ export class RecipeIngredient extends Base {
   ingredientId!: number;
 
   // Join ref to Ingredient
-  @ManyToOne((type) => Ingredient, (ingredient) => ingredient.recipeIngredients)
+  @ManyToOne(
+    (type) => Ingredient,
+    (ingredient) => ingredient.recipeIngredients,
+    { onDelete: "CASCADE" }
+  )
   @JoinColumn({ name: "ingredient_id" })
   ingredient!: Ingredient;
 
   @Column({ type: "decimal" })
   amount!: number;
+
+  @Column({
+    type: "varchar",
+    length: 10,
+    comment: "Unit of measurement (e.g., g, kg, piece)",
+  })
+  unit!: IngredientUnit;
 }

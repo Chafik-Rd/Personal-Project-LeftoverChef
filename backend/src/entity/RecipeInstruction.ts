@@ -8,7 +8,9 @@ export class RecipeInstruction extends Base {
   recipeId!: number;
 
   // Join ref Recipe
-  @ManyToOne((type) => Recipe, (recipe) => recipe.recipeInstructions)
+  @ManyToOne((type) => Recipe, (recipe) => recipe.recipeInstructions, {
+    onDelete: "CASCADE",
+  })
   @JoinColumn({ name: "recipe_id" })
   recipe!: Recipe;
 

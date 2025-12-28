@@ -57,7 +57,7 @@ export class IngredientService {
 
     // Update data
     if (data.name !== undefined) ingredient.name = data.name;
-    if (data.unit !== undefined) ingredient.unit = data.unit;
+
     await this.ingredintRepo.save(ingredient);
 
     return ingredient;

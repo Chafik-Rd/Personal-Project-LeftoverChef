@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
-import type { HttpError } from "../types/express.type.js";
+import type { HttpError } from "../types/share.type.js";
+
 
 export const centralizedError = (
   err: HttpError,

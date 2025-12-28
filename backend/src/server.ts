@@ -22,12 +22,13 @@ app.use(helmet());
 
 // CORS configuration
 const corsObption = {
-  oigin: process.env.ALLOWED_ORIGINS
+  origin: process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(",")
     : [
         "http://localhost:5173",
         "http://localhost:5174",
         "http://localhost:5175",
+        "http://localhost:3000",
       ],
   credentials: true, // ✅ allow cookies to be sent
 };
